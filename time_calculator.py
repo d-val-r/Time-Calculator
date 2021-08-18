@@ -23,10 +23,13 @@ def add_time(start, duration, *args):
     starting_minute = int(start[1].split()[0])
     am_pm = start[1].split()[1]
 
-
     hour_to_add = duration.split(":")[0]
     minute_to_add = duration.split(":")[1]
-
+    
+    # integer divide the number of hours to add to show how many
+    # days (24 hour periods) were added
+    days_later = (hour_to_add // 24)
+    
     new_hour = int(starting_hour) + int(hour_to_add)
     new_minute = int(starting_minute) + int(minute_to_add)
 
@@ -41,6 +44,10 @@ def add_time(start, duration, *args):
 
         if (am_pm == "PM"):
             am_pm = "AM"
+
+            # increment the days_later variable because the time went from
+            # a PM time to an AM time
+            days_later += 1
             if (day != False):
                 day = days[(start_date + 1) % len(days)]
         else:
@@ -49,12 +56,11 @@ def add_time(start, duration, *args):
     # format output based on if the date was included or not
     if (day != False):
         new_time = f"{new_hour}:{new_minute} {am_pm}, {day}"
-        difference = math.abs(start_time - days.indexof(day))
-        if (difference > 1):
-            new_time += f" ({difference} days later)"
     else:
         new_time = f"{new_hour}:{new_minute} {am_pm}"
 
+    if (days_added > 1):
+        new_time += f" ({difference} days later)"
+    
     return new_time
-
 
