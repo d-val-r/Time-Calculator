@@ -6,7 +6,7 @@ def add_time(start, duration, *args):
     # variable will either be a string or a Boolean
     if (len(args) > 0):
 
-        days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' \
+        days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', \
             'sunday']
         day = args[0].lower()
         start_date = days.index(day)
