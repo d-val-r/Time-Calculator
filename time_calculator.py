@@ -26,6 +26,7 @@ def add_time(start, duration, *args):
     # integer divide the number of hours to add to show how many
     # days (24 hour periods) were added
     days_later = (int(hour_to_add) // 24)
+    hour_to_add = (int(hour_to_add) % 24)
     
     new_hour = int(starting_hour) + int(hour_to_add)
     new_minute = int(starting_minute) + int(minute_to_add)
