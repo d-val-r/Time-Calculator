@@ -5,15 +5,16 @@ def add_time(start, duration, *args):
     # test if user supplied argument to view the day; the day
     # variable will either be a string or a Boolean
     if (len(args) > 0):
+
+        days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' \
+            'sunday']
         day = args[0].lower()
-        start_date = days.indexof(day)
+        start_date = days.index(day)
     else:
         day = False
 
 
 
-    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' \
-            'sunday']
 
 
     # split the start time, "hh:mm AM/PM", and extract
@@ -28,7 +29,7 @@ def add_time(start, duration, *args):
     
     # integer divide the number of hours to add to show how many
     # days (24 hour periods) were added
-    days_later = (hour_to_add // 24)
+    days_later = (int(hour_to_add) // 24)
     
     new_hour = int(starting_hour) + int(hour_to_add)
     new_minute = int(starting_minute) + int(minute_to_add)
@@ -59,8 +60,7 @@ def add_time(start, duration, *args):
     else:
         new_time = f"{new_hour}:{new_minute} {am_pm}"
 
-    if (days_added > 1):
-        new_time += f" ({difference} days later)"
+    if (days_later > 1):
+        new_time += f" ({days_later} days later)"
     
     return new_time
-
