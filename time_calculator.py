@@ -36,7 +36,7 @@ def add_time(start, duration, *args):
         new_hour += 1
         new_minute %= 60
 
-    if (new_hour > 12):
+    if (new_hour >= 12):
         new_hour %= 12
 
         if (am_pm == "PM"):
@@ -55,7 +55,11 @@ def add_time(start, duration, *args):
     if (new_hour == 0):
         new_hour = 12
 
-    # format output based on if the date was included or not
+
+    new_hour = str(new_hour).zfill(2)
+    new_minute = str(new_minute).zfill(2)
+   
+   # format output based on if the date was included or not
     if (day != False):
         new_time = f"{new_hour}:{new_minute} {am_pm}, {day.capitalize()}"
     else:
