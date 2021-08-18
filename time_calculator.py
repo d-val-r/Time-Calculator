@@ -13,10 +13,6 @@ def add_time(start, duration, *args):
     else:
         day = False
 
-
-
-
-
     # split the start time, "hh:mm AM/PM", and extract
     # relevant values
     start = start.split(":")
@@ -54,9 +50,14 @@ def add_time(start, duration, *args):
         else:
             am_pm = "PM"
 
+    # modular arithmetic makes a value of 12 AM impossible (12 % 12 == 0),
+    # so set new_hour accordingly
+    if (new_hour == 0):
+        new_hour = 12
+
     # format output based on if the date was included or not
     if (day != False):
-        new_time = f"{new_hour}:{new_minute} {am_pm}, {day}"
+        new_time = f"{new_hour}:{new_minute} {am_pm}, {day.capitalize()}"
     else:
         new_time = f"{new_hour}:{new_minute} {am_pm}"
 
