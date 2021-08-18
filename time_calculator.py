@@ -48,10 +48,11 @@ def add_time(start, duration, *args):
             # increment the days_later variable because the time went from
             # a PM time to an AM time
             days_later += 1
-            if (day != False):
-                day = days[(start_date + days_later) % len(days)]
         else:
             am_pm = "PM"
+
+    if (day != False):
+        day = days[(start_date + days_later) % len(days)]
 
     # modular arithmetic makes a value of 12 AM impossible (12 % 12 == 0),
     # so set new_hour accordingly
