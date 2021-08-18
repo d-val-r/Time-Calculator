@@ -5,15 +5,15 @@ def add_time(start, duration, *args):
     # test if user supplied argument to view the day; the day
     # variable will either be a string or a Boolean
     if (len(args) > 0):
-        day = args[0]
+        day = args[0].lower()
         start_date = days.indexof(day)
     else:
         day = False
 
 
 
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' \
-            'Sunday']
+    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' \
+            'sunday']
 
 
     # split the start time, "hh:mm AM/PM", and extract
