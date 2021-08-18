@@ -46,7 +46,7 @@ def add_time(start, duration, *args):
             # a PM time to an AM time
             days_later += 1
             if (day != False):
-                day = days[(start_date + 1) % len(days)]
+                day = days[(start_date + days_later) % len(days)]
         else:
             am_pm = "PM"
 
