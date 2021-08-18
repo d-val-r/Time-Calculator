@@ -65,7 +65,9 @@ def add_time(start, duration, *args):
     else:
         new_time = f"{new_hour}:{new_minute} {am_pm}"
 
-    if (days_later > 1):
+    if (days_later == 1):
+        new_time += " (next day)"
+    elif (days_later > 1):
         new_time += f" ({days_later} days later)"
     
     return new_time
