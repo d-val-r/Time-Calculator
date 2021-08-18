@@ -19,16 +19,16 @@ def add_time(start, duration, *args):
     # split the start time, "hh:mm AM/PM", and extract
     # relevant values
     start = start.split(":")
-    starting_hour = start[0]
-    starting_minute = start[1].split()[0]
+    starting_hour = int(start[0])
+    starting_minute = int(start[1].split()[0])
     am_pm = start[1].split()[1]
 
 
-    hour_to_add = duration.split()[0]
-    minute_to_add = duration.split()[1]
+    hour_to_add = duration.split(":")[0]
+    minute_to_add = duration.split(":")[1]
 
-    new_hour = starting_hour + hour_to_add
-    new_minute = starting_minute + minute_to_add
+    new_hour = int(starting_hour) + int(hour_to_add)
+    new_minute = int(starting_minute) + int(minute_to_add)
 
     # the largest (legal) minute sum possible is 59+59, so at most,
     # the hour increments by 1
@@ -54,3 +54,8 @@ def add_time(start, duration, *args):
             new_time += f" ({difference} days later)"
     else:
         new_time = f"{new_hour}:{new_minute} {am_pm}"
+
+    return new_time
+
+
+print(add_time("3:00 PM", "3:10"))
