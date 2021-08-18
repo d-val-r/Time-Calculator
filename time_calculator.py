@@ -36,6 +36,8 @@ def add_time(start, duration, *args):
         new_hour += 1
         new_minute %= 60
 
+    # >= because 12:00 is otherwise not counted as a possible
+    # AM time
     if (new_hour >= 12):
         new_hour %= 12
 
