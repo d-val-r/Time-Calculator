@@ -58,4 +58,3 @@ def add_time(start, duration, *args):
     return new_time
 
 
-print(add_time("3:00 PM", "3:10"))
