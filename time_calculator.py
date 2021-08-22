@@ -1,5 +1,3 @@
-import math
-
 def add_time(start, duration, *args):
     
     # test if user supplied argument to view the day; the day
