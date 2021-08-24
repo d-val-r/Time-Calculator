@@ -18,13 +18,28 @@ def add_time(start, duration, *args):
     starting_minute = int(start[1].split()[0])
     am_pm = start[1].split()[1]
 
-    hour_to_add = duration.split(":")[0]
-    minute_to_add = duration.split(":")[1]
+    hour_to_add = int(duration.split(":")[0])
+    minute_to_add = int(duration.split(":")[1])
     
     # integer divide the number of hours to add to show how many
     # days (24 hour periods) were added
-    days_later = (int(hour_to_add) // 24)
-    hour_to_add = (int(hour_to_add) % 24)
+    days_later = hour_to_add // 24
+    hour_to_add = hour_to_add % 24
+
+    # the minimum number of hours/minutes needed to reach the next day
+    minimum_hour = 24 - starting_hour
+    minimum_minute = 60 - starting_minute
+
+    if (hour_to_add >= minimum_hour): 
+        days_later += 1
+        hour_to_add -= minimum_hour
+    elif (hour_to_add == minimum_hour - 1 and minute_to_add >= minimum_minute):
+        days_later += 1
+        hour_to_add = 0
+        minute_to_add -= minimum_minute
+
+
+
     
     new_hour = int(starting_hour) + int(hour_to_add)
     new_minute = int(starting_minute) + int(minute_to_add)
